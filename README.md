@@ -1,33 +1,33 @@
-# Sayısal Analiz | C
+# Numerical Analysis | C
 
-**Türkçe** | [English](README.en.md)
+[Türkçe](README.tr.md) | **English**
 
-**Kök bulma, lineer cebir, türev, integral ve interpolasyon yöntemlerini tek bir terminal uygulamasında birleştiren sayısal analiz projesi.**
+**A terminal application for root finding, linear algebra, numerical differentiation, integration, and interpolation.**
 
-Yapısal Programlama dersi kapsamında geliştirilen bu uygulama, kullanıcıdan alınan fonksiyonlar ve matrisler üzerinde sayısal hesaplamalar yapar. Matematiksel ifadeler çalışma anında ayrıştırılır; sonuçlar seçilen yönteme göre kök, hata, iterasyon sayısı, matris veya çözüm vektörü olarak gösterilir.
+Developed for a Structured Programming course, this project performs numerical computations on user-supplied functions and matrices. Mathematical expressions are parsed at runtime, and each method reports its results as roots, error estimates, iteration counts, matrices, or solution vectors.
 
-Harici bir sayısal hesaplama kütüphanesi gerektirmez. Algoritmalar, ifade ayrıştırıcısı ve bellek yönetimi C ile uygulanmıştır.
+No external numerical computing library is required. The algorithms, expression parser, and memory management are implemented in C.
 
-## Yöntemler
+## Available methods
 
-| Menü | Yöntem | İşlev |
+| Menu | Method | Purpose |
 | :---: | --- | --- |
-| 1 | Bisection | İşaret değiştiren bir aralıkta ikiye bölme ile kök arama |
-| 2 | Regula-Falsi | Doğrusal yaklaşım ile kök arama |
-| 3 | Newton-Raphson | Başlangıç tahmini ve sayısal türev kullanarak kök arama |
-| 4 | Gauss-Jordan | N × N matrisin tersini hesaplama |
-| 5 | Cholesky (LU)* | Alt ve üst üçgensel ayrıştırma ile lineer sistem çözme |
-| 6 | Gauss-Seidel | Lineer denklem sistemini iteratif olarak çözme |
-| 7 | Sayısal türev | İleri, geri ve merkezi fark sonuçlarını birlikte hesaplama |
-| 8 | Simpson 1/3 ve 3/8 | İki integral yaklaşımını birlikte hesaplama |
-| 9 | Trapez | Belirli integrali trapez yaklaşımıyla hesaplama |
-| 10 | Gregory-Newton | Eşit aralıklı noktalardan ileri fark interpolasyonu |
+| 1 | Bisection | Find a root by repeatedly halving a sign-changing interval |
+| 2 | Regula-Falsi | Find a root using linear interpolation |
+| 3 | Newton-Raphson | Find a root using an initial estimate and a numerical derivative |
+| 4 | Gauss-Jordan | Compute the inverse of an N × N matrix |
+| 5 | Cholesky (LU)* | Solve a linear system through lower and upper triangular factorization |
+| 6 | Gauss-Seidel | Solve a linear system iteratively |
+| 7 | Numerical differentiation | Compute forward, backward, and central differences together |
+| 8 | Simpson's 1/3 and 3/8 | Compute two numerical integration approximations together |
+| 9 | Trapezoidal rule | Approximate a definite integral using trapezoids |
+| 10 | Gregory-Newton | Interpolate equally spaced data using forward differences |
 
-\* Menüde “Cholesky (LU)” olarak adlandırılan uygulama, `U` matrisinin köşegenini 1 alan **Crout tipi LU ayrıştırması** yapar; klasik `A = L Lᵀ` Cholesky ayrıştırması değildir.
+\* The menu labels this method “Cholesky (LU).” The implementation performs **Crout-style LU factorization** with a unit diagonal in `U`, rather than the classical `A = L Lᵀ` Cholesky factorization.
 
-## Derleme ve çalıştırma
+## Build and run
 
-Gereksinimler: C99 destekleyen GCC veya Clang ve bir terminal. Komutları proje klasöründe çalıştırın.
+Requirements: GCC or Clang with C99 support and a terminal. Run these commands from the project directory.
 
 ### Linux / macOS
 
@@ -43,23 +43,23 @@ gcc -std=c99 -O2 numerical_analysis.c -o program.exe -lm
 .\program.exe
 ```
 
-`-lm`, matematik kütüphanesini bağlar. Uygulama açıldığında yöntem numarasını girin; ardından ekrandaki parametre istemlerini takip edin. Ana menüde `0` seçeneği uygulamayı kapatır.
+The `-lm` option links the math library. Once the application starts, enter a method number and follow the parameter prompts. Select `0` in the main menu to exit.
 
-## Fonksiyon yazımı
+## Function syntax
 
-Fonksiyon girişinde yalnızca ifadeyi yazın; `f(x) =` eklemeyin.
+Enter the expression alone, without an `f(x) =` prefix.
 
-| Öğe | Desteklenen yazım |
+| Element | Supported syntax |
 | --- | --- |
-| Değişken ve sabit | `x`, `pi` |
-| Temel işlemler | `+`, `-`, `*`, `/`, `^` |
-| Gruplama | `(` ve `)` |
-| Trigonometrik fonksiyonlar | `sin`, `cos`, `tan`, `cot` |
-| Ters trigonometrik fonksiyonlar | `arcsin`, `arccos`, `arctan` |
-| Üstel ve logaritmik fonksiyonlar | `exp(x)`, `ln(x)`, `log(x)` |
-| Tabanlı logaritma | `log_5(x)`; değişken taban için `log_x(8)` |
+| Variable and constant | `x`, `pi` |
+| Arithmetic operators | `+`, `-`, `*`, `/`, `^` |
+| Grouping | `(` and `)` |
+| Trigonometric functions | `sin`, `cos`, `tan`, `cot` |
+| Inverse trigonometric functions | `arcsin`, `arccos`, `arctan` |
+| Exponential and logarithmic functions | `exp(x)`, `ln(x)`, `log(x)` |
+| Logarithms with a specified base | `log_5(x)`; use `log_x(8)` for a variable base |
 
-Örnek ifadeler:
+Example expressions:
 
 ```text
 x^3 - 2*x - 5
@@ -69,26 +69,26 @@ ln(x) + log_2(x)
 cos(pi*x)
 ```
 
-- Çarpma işaretini açıkça yazın: `2*x` ve `2*(x+1)`.
-- Ondalık ayırıcı olarak nokta kullanın: `0.001`.
-- Fonksiyon adlarını küçük harfle yazın; trigonometrik açılar radyan cinsindedir.
-- `ln` doğal logaritma, `log` ise 10 tabanında logaritmadır.
-- Kareköklü ifadeler için `x^0.5` kullanılabilir; `sqrt` tanımlı değildir.
+- Write multiplication explicitly: `2*x` and `2*(x+1)`.
+- Use a decimal point: `0.001`.
+- Use lowercase function names. Trigonometric angles are in radians.
+- `ln` is the natural logarithm; `log` is the base-10 logarithm.
+- Use `x^0.5` for a square root; `sqrt` is not defined.
 
-## Örnek: √2 değerini bulma
+## Example: finding √2
 
-Ana menüden **1 — Bisection Method** seçin ve sırasıyla şu değerleri girin:
+Select **1 — Bisection Method** from the main menu and enter these values in order:
 
-| Parametre | Değer |
+| Parameter | Value |
 | --- | --- |
-| Fonksiyon | `x^2 - 2` |
-| Ondalık basamak sayısı | `6` |
-| Alt sınır | `1` |
-| Üst sınır | `2` |
-| Tolerans | `0.000001` |
-| Maksimum iterasyon | `100` |
+| Function | `x^2 - 2` |
+| Decimal places | `6` |
+| Lower bound | `1` |
+| Upper bound | `2` |
+| Tolerance | `0.000001` |
+| Maximum iterations | `100` |
 
-Çıktı:
+Output:
 
 ```text
 --- RESULT ---
@@ -97,38 +97,38 @@ Ana menüden **1 — Bisection Method** seçin ve sırasıyla şu değerleri gir
   Iteration : 20
 ```
 
-İntegral için **8 — Simpson's Methods** seçeneğinde `x^2`, 6 ondalık basamak, `[0, 1]` aralığı ve `n = 6` kullanıldığında her iki yöntem de `0.333333` sonucunu verir.
+For integration, select **8 — Simpson's Methods** and use `x^2`, 6 decimal places, the interval `[0, 1]`, and `n = 6`. Both methods return `0.333333`.
 
-## Uygulama yapısı
+## How it works
 
 ```text
-Fonksiyon metni → Token dizisi → Postfix ifade → Yığın ile değerlendirme
-                                                    ↓
-                                              Sayısal yöntem
-                                                    ↓
-                                               Terminal çıktısı
+Function text → Token sequence → Postfix expression → Stack evaluation
+                                                           ↓
+                                                    Numerical method
+                                                           ↓
+                                                     Terminal output
 ```
 
-İfade ayrıştırıcısı, işlem önceliği ve parantezleri dikkate alarak infix gösterimi postfix biçimine dönüştürür. Aynı ifade farklı `x` değerlerinde değerlendirilerek kök bulma, türev ve integral yöntemlerinde kullanılır. Matrisler ve interpolasyon tabloları dinamik bellekle oluşturulur.
+The expression parser converts infix notation to postfix notation while respecting operator precedence and parentheses. The resulting expression is evaluated at different values of `x` by the root-finding, differentiation, and integration methods. Matrices and interpolation tables use dynamically allocated memory.
 
-## Proje dosyaları
+## Project files
 
-| Dosya / klasör | İçerik |
+| File / directory | Contents |
 | --- | --- |
-| [`numerical_analysis.c`](numerical_analysis.c) | Algoritmalar, ifade ayrıştırıcısı ve terminal menüsü |
-| [`screenshots/`](screenshots/) | Uygulamaya ait ekran görüntüleri |
-| [`.gitignore`](.gitignore) | Derleme çıktıları, yerel ayarlar ve arşivler için dışlama kuralları |
-| [`README.md`](README.md) | Türkçe dokümantasyon |
-| [`README.en.md`](README.en.md) | İngilizce dokümantasyon |
+| [`numerical_analysis.c`](numerical_analysis.c) | Algorithms, expression parser, and terminal menu |
+| [`screenshots/`](screenshots/) | Application screenshots |
+| [`.gitignore`](.gitignore) | Ignore rules for build outputs, local settings, and archives |
+| [`README.tr.md`](README.tr.md) | Turkish documentation |
+| [`README.md`](README.md) | English documentation |
 
-## Kullanım notları
+## Usage notes
 
-- Bisection ve Regula-Falsi için sürekli bir fonksiyon ve uçlarında zıt işaretli değerler veren bir aralık seçin.
-- Newton-Raphson sayısal türev kullanır. Başlangıç tahmini ve sıfırdan farklı türev adımı `h`, yakınsamayı etkiler.
-- Gauss-Seidel her sistemde yakınsamaz; köşegeni baskın matrisler uygun bir başlangıçtır. LU uygulaması pivotlama yapmaz.
-- Simpson 1/3 için tek girilen `n`, bir artırılarak çift yapılır. Simpson 3/8 uygulaması her aralığı kendi içinde üçe böldüğünden pozitif `n` değerinin 3'ün katı olması gerekmez.
-- Gregory-Newton yöntemi eşit aralıklı `x` değerleri gerektirir.
-- Ondalık basamak seçimi çıktı biçimini belirler; yakınsama toleransı ayrı bir parametredir.
-- Girdi doğrulaması sınırlıdır. Geçerli ifadeler, pozitif boyutlar ve yöntemlere uygun parametreler kullanın; logaritma ve bölme gibi işlemlerin tanım koşullarını gözetin.
+- For Bisection and Regula-Falsi, choose a continuous function and an interval whose endpoints have function values with opposite signs.
+- Newton-Raphson uses a numerical derivative. The initial estimate and nonzero derivative step `h` affect convergence.
+- Gauss-Seidel does not converge for every system; diagonally dominant matrices are a useful starting point. The LU implementation does not perform pivoting.
+- For Simpson's 1/3 rule, an odd `n` is increased by one to make it even. The Simpson's 3/8 implementation divides each interval into three subintervals internally, so a positive `n` does not need to be a multiple of 3.
+- Gregory-Newton interpolation requires equally spaced `x` values.
+- The decimal-place setting controls output formatting; convergence tolerance is a separate parameter.
+- Input validation is limited. Use valid expressions, positive dimensions, and parameters appropriate for the selected method. Respect the domains of logarithms, division, and other operations.
 
-Bu proje, sayısal yöntemlerin C ile uygulanmasını incelemek ve örnek problemler üzerinde çalışmak için hazırlanmıştır.
+This project is intended for studying numerical methods implemented in C and exploring them through example problems.
