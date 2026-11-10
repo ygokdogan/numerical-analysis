@@ -1,0 +1,27 @@
+# İşletim sistemi dosyaları
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+# Derleme çıktıları
+/program
+/program.exe
+/a.out
+/build/
+*.o
+*.obj
+*.exe
+*.out
+*.dSYM/
+
+# Yerel editör ayarları ve geçici dosyalar
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.tmp
+
+# Yerel arşivler
+*.zip
