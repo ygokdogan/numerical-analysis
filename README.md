@@ -1,5 +1,7 @@
 # Sayısal Analiz | C
 
+**Türkçe** | [English](README.en.md)
+
 **Kök bulma, lineer cebir, türev, integral ve interpolasyon yöntemlerini tek bir terminal uygulamasında birleştiren sayısal analiz projesi.**
 
 Yapısal Programlama dersi kapsamında geliştirilen bu uygulama, kullanıcıdan alınan fonksiyonlar ve matrisler üzerinde sayısal hesaplamalar yapar. Matematiksel ifadeler çalışma anında ayrıştırılır; sonuçlar seçilen yönteme göre kök, hata, iterasyon sayısı, matris veya çözüm vektörü olarak gösterilir.
@@ -116,6 +118,8 @@ Fonksiyon metni → Token dizisi → Postfix ifade → Yığın ile değerlendir
 | [`numerical_analysis.c`](numerical_analysis.c) | Algoritmalar, ifade ayrıştırıcısı ve terminal menüsü |
 | [`screenshots/`](screenshots/) | Uygulamaya ait ekran görüntüleri |
 | [`.gitignore`](.gitignore) | Derleme çıktıları, yerel ayarlar ve arşivler için dışlama kuralları |
+| [`README.md`](README.md) | Türkçe dokümantasyon |
+| [`README.en.md`](README.en.md) | İngilizce dokümantasyon |
 
 ## Kullanım notları
 
